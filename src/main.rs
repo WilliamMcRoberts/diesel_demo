@@ -19,6 +19,7 @@ pub fn establish_connection() -> MysqlConnection {
 fn main() {
     let connection = &mut establish_connection();
 
+    // create post
     // let title = String::from("TypeScript Programming");
     // let body = String::from("TypeScript description.");
     //
@@ -32,6 +33,7 @@ fn main() {
     //
     // println!("Created post: {}, with id: {}", post.title, post.id);
 
+    // get first five posts unpublished
     // let mut results = get_first_five_posts_published(connection);
     // for post in results.iter_mut() {
     //     post.published = false;
@@ -39,9 +41,12 @@ fn main() {
     //     update_post(connection, post);
     // }
     // let pub_results = get_first_five_posts_not_published(connection);
-    let rows_deleted = delete_post(connection, 7);
-    println!("Deleted {} rows", rows_deleted);
 
+    // deleting post
+    // let rows_deleted = delete_post(connection, 7);
+    // println!("Deleted {} rows", rows_deleted);
+
+    // get all posts
     let all_results = get_all_posts(connection);
 
     println!("Displaying {} posts", all_results.len());
@@ -116,6 +121,7 @@ fn get_first_five_posts_not_published(connection: &mut MysqlConnection) -> Vec<P
 
     results
 }
+
 fn update_post(connection: &mut MysqlConnection, post_to_update: &Post) -> Post {
     use self::schema::posts::dsl::*;
 
